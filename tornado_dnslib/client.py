@@ -57,7 +57,7 @@ class RawResolver(object):
                 continue
             raise tornado.gen.Return(result)
             
-        raise Exception()
+        raise
 
     @tornado.gen.coroutine
     def _query_server(self, server, payload, timeout):
