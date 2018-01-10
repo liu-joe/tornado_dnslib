@@ -47,7 +47,7 @@ class UDPStream(object):
 
     def recv(self,sz):
         return self.socket.recv(sz)
-    
+
     def close(self):
         self.ioloop.remove_handler(self.socket)
         self.socket.close()
@@ -63,6 +63,7 @@ class UDPStream(object):
     def _timeout_read(self, timeout):
         if self._read_future:
             self._read_future.set_exception(UDPTimeout("timeout after " + str(timeout)))
+            self._read_future = None
 
     def _handle_read(self):
         if self._read_timeout:
