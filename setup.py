@@ -4,8 +4,11 @@ try:
 except ImportError:
     from distutils.core import setup
 
-from pip.req import parse_requirements
-import pip.download
+
+def get_requirements():
+    with open('requirements.txt') as fp:
+        return [x.strip() for x in fp.read().split('\n')
+                if not x.startswith('#')]
 
 config = {
     'description': 'Tornado-based Asynchronous DNS client',
@@ -22,8 +25,7 @@ config = {
     'packages': ['tornado_dnslib'],
     'scripts': [],
     'name': 'tornado_dnslib',
-    # TODO: unify with requirements.txt
-    'install_requires': [str(ir.req) for ir in parse_requirements('requirements.txt', session=pip.download.PipSession())],
+    'install_requires': get_requirements(),
 }
 
 setup(**config)
