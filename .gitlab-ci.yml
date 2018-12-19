@@ -11,6 +11,7 @@ upload_egg:
     - python get-pip.py
     - pip install pyOpenSSL ndg-httpsclient pyasn1
     - pip install -U devpi-client
+    - pip install tornado==4.5.1
     # install
     - pip install .
     - pip show $CI_PROJECT_NAME
