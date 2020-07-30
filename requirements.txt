@@ -1,2 +1,2 @@
-tornado>=4
+tornado==4
 dnslib
